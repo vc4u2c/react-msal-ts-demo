@@ -20,11 +20,13 @@ const ProfileContent = () => {
 
     useEffect(() => {
         if (!graphData && inProgress === InteractionStatus.None) {
-            callMsGraph().then(response => setGraphData(response)).catch((e) => {
+            const activeAccount = instance.getActiveAccount();
+            const roles = activeAccount.idTokenClaims.roles;
+            callMsGraph().then(response => setGraphData({ ...response, roles })).catch((e) => {
                 if (e instanceof InteractionRequiredAuthError) {
                     instance.acquireTokenRedirect({
                         ...loginRequest,
-                        account: instance.getActiveAccount() as AccountInfo
+                        account: activeAccount as AccountInfo
                     });
                 }
             });

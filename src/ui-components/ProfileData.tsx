@@ -14,11 +14,14 @@ export type GraphData = {
     jobTitle: string,
     mail: string,
     businessPhones: string[],
-    officeLocation: string
+    officeLocation: string,
+    roles: string[]
 };
 
 export const ProfileData: React.FC<{graphData: GraphData}> = ({graphData}) => {
     return (
+        <>
+        
         <List className="profileData">
             <NameListItem name={graphData.displayName} />
             <JobTitleListItem jobTitle={graphData.jobTitle} />
@@ -26,6 +29,10 @@ export const ProfileData: React.FC<{graphData: GraphData}> = ({graphData}) => {
             <PhoneListItem phone={graphData.businessPhones[0]} />
             <LocationListItem location={graphData.officeLocation} />
         </List>
+        {
+            (graphData.roles[0] == 'MsalReactDemo.Admin') ? <h2>Admin</h2> : <h2>User</h2>
+        }
+        </>
     );
 };
 

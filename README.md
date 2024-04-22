@@ -55,7 +55,7 @@ npm start
 
 ```bash
 
-# Login to zure
+# Login to azure
 az login
 
 # Set active subscription
@@ -111,6 +111,33 @@ az account show
 # SPA, http://localhost:3000
 # Click Register
 # API Plate Delegate User.Read Permission from Microsoft.Graph
+
+Create a user using azur ecli
+[Microsoft Entra ID Application authorization](https://www.youtube.com/watch?v=ZxHnv7OTzXI&t=105s)
+# Create Test User
+az ad user create --display-name "Jane Doe" --password "Qaru871794" --user-principal-name "jane.doe@vc4u2cgmail.onmicrosoft.com"
+
+# Create 2 Directories
+az ad group create --display-name "edg-msalreactdemoadmin" --mail-nickname "edg-msalreactdemoadmin"
+az ad group create --display-name "edg-msalreactdemouser" --mail-nickname "edg-msalreactdemouser"
+
+# Get object id using display name
+az ad user list --query "[?displayName=='Vinod Chandran'].id" --output tsv
+# 77772f63-5855-4897-acdd-dcf8824f7068
+az ad user list --query "[?displayName=='Jane Doe'].id" --output tsv
+# 4cc3933d-54d4-4450-b90c-46f8899b6177
+
+# Add members to groups
+az ad group member add --group "edg-msalreactdemoadmin" --member-id "77772f63-5855-4897-acdd-dcf8824f7068"
+az ad group member add --group "edg-msalreactdemouser" --member-id "4cc3933d-54d4-4450-b90c-46f8899b6177"
+
+jane.doe@vc4u2cgmail.onmicrosoft.com
+eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6InEtMjNmYWxldlpoaEQzaG05Q1Fia1A1TVF5VSJ9.eyJhdWQiOiI4YWY1ZWVkZi00NDE4LTRlOTUtYTIwMC1hZWM0NTQ2ZGJlOWYiLCJpc3MiOiJodHRwczovL2xvZ2luLm1pY3Jvc29mdG9ubGluZS5jb20vNzM1MjFjYmUtOTg1OC00MjMwLTk5NmQtMzE5YjgwNzRlMTAzL3YyLjAiLCJpYXQiOjE3MTM2NzI3MzEsIm5iZiI6MTcxMzY3MjczMSwiZXhwIjoxNzEzNjc2NjMxLCJncm91cHMiOlsiNmQ4YzE1YWUtYTk5Ny00ZDllLWE1ZWYtOTNjODNkYWU0YThkIl0sIm5hbWUiOiJKYW5lIERvZSIsIm5vbmNlIjoiMDE4ZWZlZGYtNDA5Mi03MGIyLTg5OWUtZDJhMTk2Mjg5MzFlIiwib2lkIjoiNGNjMzkzM2QtNTRkNC00NDUwLWI5MGMtNDZmODg5OWI2MTc3IiwicHJlZmVycmVkX3VzZXJuYW1lIjoiamFuZS5kb2VAdmM0dTJjZ21haWwub25taWNyb3NvZnQuY29tIiwicmgiOiIwLkFWQUF2aHhTYzFpWU1FS1piVEdiZ0hUaEE5X3U5WW9ZUkpWT29nQ3V4RlJ0dnBfLUFGUS4iLCJyb2xlcyI6WyJNc2FsUmVhY3REZW1vLlVzZXIiXSwic3ViIjoia2hKUU4tbUtwYXFkblB6YXdSRVZiRGg1bnhEandORzlWalhuTzVmZWV0YyIsInRpZCI6IjczNTIxY2JlLTk4NTgtNDIzMC05OTZkLTMxOWI4MDc0ZTEwMyIsInV0aSI6IkpoSWwyOG8wN1UydWl3NGprUDBiQUEiLCJ2ZXIiOiIyLjAiLCJ3aWRzIjpbImI3OWZiZjRkLTNlZjktNDY4OS04MTQzLTc2YjE5NGU4NTUwOSJdfQ.DPmUWcQrRxRC89ssB4wUMprIEbdAPvtItKFVQLqVeRvlmYU4I1B_5vGHYBv1TEyNsLqZ1hNgU_VPCtb-NPqxPUmDrNzO-99rvSS5ZnKAvvJYb9td_6nkZ9MfTa8At33YCdLM1AdQbMshR_H64xCdaRr4XaXnF-OcmOakbwJVwe8bV1QSEOo85LeMHE2RDHBqf9wXvi2KYo3emS91E1JrIBr0ebhq2bQZ-Tm4VtAzxjn6i8bkH4yEV92TumXvxOp8RHrap5_2Of291kXcNRorhjrxm5KhWUsS-VM4TH5Cw2Js6-mjK0sSyJL6Nnf31gPcrTVeShf7R7ZWRg1tpUAGPw
+
+# To view the tokens go to Applications tab in chromes and browser local or session storage to get the token. 
+# In the Id token paste the secret to the site below to see the token.
+https://jwt.ms/
+
 ```
 
 #### Running the sample development server
@@ -167,3 +194,6 @@ You will also see any lint errors in the console.
 - [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started)
 - [React Router documentation](https://reactrouter.com/web/guides/quick-start)
 - [Material-UI documentation](https://material-ui.com/getting-started/installation/)
+- https://learn.microsoft.com/en-us/azure/active-directory-b2c/add-sign-up-and-sign-in-policy?pivots=b2c-user-flow
+- [Set up a sign-up and sign-in flow in Azure Active Directory B2C](https://learn.microsoft.com/en-us/azure/active-directory-b2c/add-sign-up-and-sign-in-policy?pivots=b2c-user-flow_
+- [Configure the role claim](https://learn.microsoft.com/en-us/entra/identity-platform/enterprise-app-role-management)
