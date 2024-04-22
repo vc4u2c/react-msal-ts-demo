@@ -197,3 +197,4 @@ You will also see any lint errors in the console.
 - https://learn.microsoft.com/en-us/azure/active-directory-b2c/add-sign-up-and-sign-in-policy?pivots=b2c-user-flow
 - [Set up a sign-up and sign-in flow in Azure Active Directory B2C](https://learn.microsoft.com/en-us/azure/active-directory-b2c/add-sign-up-and-sign-in-policy?pivots=b2c-user-flow_
 - [Configure the role claim](https://learn.microsoft.com/en-us/entra/identity-platform/enterprise-app-role-management)
+- https://github.com/Azure-Samples/ms-identity-javascript-react-tutorial
